@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: lexend;
+    background-color: #49544A;
+}
+
+
+div {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
