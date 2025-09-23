@@ -6,16 +6,16 @@ const output = document.getElementById("output");
 tekst.addEventListener("input", ordtaelling);
 
 function ordtaelling() {
-  let indhold = tekst.value; // henter brugerens tekst
-  let tegnMedMellumrum = indhold.length;
-  let tegnUdenMellemrum = indhold.replace(/\s+/g, "").length; //fjerner alle whitespaces. + er en eller flere i træk og g er global (regX)
+  const indhold = tekst.value; // henter brugerens tekst
+  const tegnMedMellumrum = indhold.length;
+  const tegnUdenMellemrum = indhold.replace(/\s+/g, "").length; //fjerner alle whitespaces. + er en eller flere i træk og g er global (regX)
 
   console.log("Tegn med mellemrum", tegnMedMellumrum);
   console.log("tegn uden mellemrum", tegnUdenMellemrum);
 
   // Tæller ordene op og tjekker om der er noget i det array som regX laver
-  let ordArray = indhold.split(/\s+/g); // bruger split så teksten bliver til et array mellem whitespace
-  let ordUdenSkrifttegn = [];
+  const ordArray = indhold.split(/\s+/g); // bruger split så teksten bliver til et array mellem whitespace
+  const ordUdenSkrifttegn = [];
 
   for (let i = 0; i < ordArray.length; ++i) {
     let ord = ordArray[i].replace(
@@ -26,10 +26,22 @@ function ordtaelling() {
       ordUdenSkrifttegn.push(ord); // hvis ordet er større end 0 så tilføjes det i et array
     }
   }
-  let antalOrd = ordUdenSkrifttegn.length;
+  const antalOrd = ordUdenSkrifttegn.length;
 
-  console.log(ordUdenSkrifttegn, antalOrd);
+  // gemmesnit af tegn i ord
+  let antalBogstver = 0;
+  for (let i = 0; i < ordUdenSkrifttegn.length; ++i) {
+    // løkken gennemgår hvert ord i arrayet og lægger længden af hvert ord til
+    antalBogstver += ordUdenSkrifttegn[i].length;
+  }
+  const gennemsnit = antalOrd > 0 ? (antalBogstver / antalOrd).toFixed(1) : 0; // hvis der er min. et år, deler den det totale antal af bogstager med antallet af ord. toFixed(giver et decimal)
+
+  console.log(ordUdenSkrifttegn, antalOrd, gennemsnit);
 
   // have tingene igennem output, måske i tre seperate dele fremfor i en fælles
   // sætte et maks antal på hvor mange tegn der må være?
+
+  output.innerHTML = `<p>Tegn med mellemrum: ${tegnMedMellumrum}</p>
+<p>Tegn uden mellemrum: ${tegnUdenMellemrum}</p>
+<p>Ord: ${antalOrd}</p>`;
 }
