@@ -18,7 +18,10 @@ function ordtaelling() {
   let ordUdenSkrifttegn = [];
 
   for (let i = 0; i < ordArray.length; ++i) {
-    let ord = ordArray[i].replace(/^[^\w]+|[^\w]+$/g, ""); // fjerner skrifttegnene fra starten og slutningen af ordet, og gør at : ikke tælles med hvis den står enkeltvist
+    let ord = ordArray[i].replace(
+      /^[^a-zA-ZæøåÆØÅ\d]+|[^a-zA-ZæøåÆØÅ\d]+$/g,
+      ""
+    ); // fjerner skrifttegnene fra starten og slutningen af ordet, og gør at : ikke tælles med hvis den står enkeltvist
     if (ord.length > 0) {
       ordUdenSkrifttegn.push(ord); // hvis ordet er større end 0 så tilføjes det i et array
     }
