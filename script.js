@@ -16,6 +16,12 @@ function ordtaelling() {
 
   // Husk gennemsnit af tegn i ord
 
+  if (indhold.length > 0) {
+    antalOrd = indhold.match(/\S+/g).length; // \S er alle ikke whitespace tegn, så ordene
+    console.log(antalOrd);
+  } else {
+    antalOrd = 0;
+  }
   // if statement til antal of ord, have tingene igennem output, måske i tre seperate dele fremfor i en fælles
   // sætte et maks antal på hvor mange tegn der må være?
 }
