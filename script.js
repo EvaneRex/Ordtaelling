@@ -17,7 +17,7 @@ function ordtaelling() {
   // Husk gennemsnit af tegn i ord
 
   if (indhold.length > 0) {
-    antalOrd = indhold.match(/\S+/g).length; // \S er alle ikke whitespace tegn, så ordene
+    antalOrd = indhold.match(/\S+/g, "").length; // \S er alle ikke whitespace tegn, så ordene
     console.log(antalOrd);
   } else {
     antalOrd = 0;
