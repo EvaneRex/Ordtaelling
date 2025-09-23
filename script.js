@@ -8,20 +8,17 @@ tekst.addEventListener("input", ordtaelling);
 function ordtaelling() {
   let indhold = tekst.value; // henter brugerens tekst
   let tegnMedMellumrum = indhold.length;
-  let tegnUdenMellemrum = indhold.replace(/\s+/g, "").length; //fjerner alle mellemrum i træk, så \s er ting som mellemrum, tab eller linjeskift. + er en eller flere i træk og g er global (regX)
-  let antalOrd = 0;
+  let tegnUdenMellemrum = indhold.replace(/\s+/g, "").length; //fjerner alle whitespaces. + er en eller flere i træk og g er global (regX)
 
   console.log("Tegn med mellemrum", tegnMedMellumrum);
   console.log("tegn uden mellemrum", tegnUdenMellemrum);
 
-  // Husk gennemsnit af tegn i ord
+  // Tæller ordene op og tjekker om der er noget i det array som regX laver
+  let ordArray = indhold.match(/\S+/g); // \S er alle ikke whitespace tegn, så ord, tal og tegn
+  let antalOrd = ordArray ? ordArray.length : 0; // hvis der er ord, gemmes længden ellers er det lig 0
 
-  if (indhold.length > 0) {
-    antalOrd = indhold.match(/\S+/g, "").length; // \S er alle ikke whitespace tegn, så ordene
-    console.log(antalOrd);
-  } else {
-    antalOrd = 0;
-  }
-  // if statement til antal of ord, have tingene igennem output, måske i tre seperate dele fremfor i en fælles
+  console.log(antalOrd);
+
+  // have tingene igennem output, måske i tre seperate dele fremfor i en fælles
   // sætte et maks antal på hvor mange tegn der må være?
 }
