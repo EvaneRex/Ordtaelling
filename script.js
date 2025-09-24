@@ -32,20 +32,20 @@ function ordtaelling() {
   const antalOrd = ordUdenSkrifttegn.length;
 
   // UDREGNING AF GENNEMSNITTET AF TEGN I ORD
-  let antalBogstver = 0;
+  let antalBogstaver = 0;
 
   // løkken gennemgår hvert ord i arrayet og lægger længden af hvert ord til
   // Udregner samtidigt det totale antal af bogstaver i alle ord
   for (let i = 0; i < ordUdenSkrifttegn.length; ++i) {
-    antalBogstver += ordUdenSkrifttegn[i].length;
+    antalBogstaver += ordUdenSkrifttegn[i].length;
   }
 
   // hvis der er min. et ord, deler den det totale antal af bogstager med antallet af ord. toFixed(giver et decimal)
-  const gennemsnit = antalOrd > 0 ? (antalBogstver / antalOrd).toFixed(1) : 0;
+  const gennemsnit = antalOrd > 0 ? (antalBogstaver / antalOrd).toFixed(1) : 0;
 
-  console.log(ordUdenSkrifttegn, antalOrd, gennemsnit);
-
-  output.innerHTML = `<p>Tegn med mellemrum: ${tegnMedMellumrum}</p>
-<p>Tegn uden mellemrum: ${tegnUdenMellemrum}</p>
-<p>Ord: ${antalOrd}</p>`;
+  // OPDATERER TALLET I TEKSTFELTERNE I HTML
+  document.getElementById("tegnMed").textContent = tegnMedMellumrum;
+  document.getElementById("tegnUden").textContent = tegnUdenMellemrum;
+  document.getElementById("antalOrd").textContent = antalOrd;
+  document.getElementById("gennemsnit").textContent = gennemsnit;
 }
