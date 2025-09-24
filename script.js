@@ -1,12 +1,10 @@
 "use strict";
-const tekst = document.getElementById("tekstfelt"); // henter tekstarea
+const tekst = document.getElementById("tekstfelt");
 
-// Opdatere ordtaelling hver gang der er et nyt input
 tekst.addEventListener("input", ordtaelling);
 
 function ordtaelling() {
-  const indhold = tekst.value; // henter brugerens tekst
-
+  const indhold = tekst.value;
   // TEGN
   const tegnMedMellumrum = indhold.length;
   //fjerner alle whitespaces. (+ er en eller flere i træk og g er global (regX)) og tæller de resterende tegn
@@ -26,11 +24,9 @@ function ordtaelling() {
       ""
     );
     if (ord.length > 0) {
-      ordUdenSkrifttegn.push(ord); // hvis ordet er større end 0 så tilføjes det i et array
+      ordUdenSkrifttegn.push(ord);
     }
   }
-
-  // Tjekker hvor mange ord der er tilbage, efter skrifttegn er fjernet
   const antalOrd = ordUdenSkrifttegn.length;
 
   // console.log(ordUdenSkrifttegn);
