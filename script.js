@@ -7,17 +7,19 @@ tekst.addEventListener("input", ordtaelling);
 
 function ordtaelling() {
   const indhold = tekst.value; // henter brugerens tekst
+
+  // TEGN
   const tegnMedMellumrum = indhold.length;
-  const tegnUdenMellemrum = indhold.replace(/\s+/g, "").length; //fjerner alle whitespaces. + er en eller flere i træk og g er global (regX)
+  //fjerner alle whitespaces. (+ er en eller flere i træk og g er global (regX)) og tæller de resterende tegn
+  const tegnUdenMellemrum = indhold.replace(/\s+/g, "").length;
 
-  // console.log("Tegn med mellemrum", tegnMedMellumrum);
-  // console.log("tegn uden mellemrum", tegnUdenMellemrum);
-
+  // ORD
   // Tæller ordene op og tjekker om der er noget i det array som regX laver
-  const ordArray = indhold.split(/\s+/g); // bruger split så teksten bliver til et array mellem whitespace
+  // bruger split så teksten bliver til et array mellem whitespace
+  const ordArray = indhold.split(/\s+/g);
   const ordUdenSkrifttegn = [];
 
-  // For løkken fjerne skrifttegnene fra starten af slutningen af ordet og gør at tegn som : ikke tælles med og godtager æøå
+  // Gå gennem hvert ord og fjerner skrifttegn i starten og slutningen af ordet.
   for (let i = 0; i < ordArray.length; ++i) {
     let ord = ordArray[i].replace(
       /^[^a-zA-ZæøåÆØÅ\d]+|[^a-zA-ZæøåÆØÅ\d]+$/g,
@@ -29,19 +31,19 @@ function ordtaelling() {
   }
   const antalOrd = ordUdenSkrifttegn.length;
 
-  // Gemmesnit af tegn i ord
+  // UDREGNING AF GENNEMSNITTET AF TEGN I ORD
   let antalBogstver = 0;
 
   // løkken gennemgår hvert ord i arrayet og lægger længden af hvert ord til
+  // Udregner samtidigt det totale antal af bogstaver i alle ord
   for (let i = 0; i < ordUdenSkrifttegn.length; ++i) {
     antalBogstver += ordUdenSkrifttegn[i].length;
   }
-  const gennemsnit = antalOrd > 0 ? (antalBogstver / antalOrd).toFixed(1) : 0; // hvis der er min. et ord, deler den det totale antal af bogstager med antallet af ord. toFixed(giver et decimal)
 
-  // console.log(ordUdenSkrifttegn, antalOrd, gennemsnit);
+  // hvis der er min. et ord, deler den det totale antal af bogstager med antallet af ord. toFixed(giver et decimal)
+  const gennemsnit = antalOrd > 0 ? (antalBogstver / antalOrd).toFixed(1) : 0;
 
-  // have tingene igennem output, måske i tre seperate dele fremfor i en fælles
-  // sætte et maks antal på hvor mange tegn der må være?
+  console.log(ordUdenSkrifttegn, antalOrd, gennemsnit);
 
   output.innerHTML = `<p>Tegn med mellemrum: ${tegnMedMellumrum}</p>
 <p>Tegn uden mellemrum: ${tegnUdenMellemrum}</p>
