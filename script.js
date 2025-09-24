@@ -1,6 +1,5 @@
 "use strict";
 const tekst = document.getElementById("tekstfelt"); // henter tekstarea
-const output = document.getElementById("output");
 
 // Opdatere ordtaelling hver gang der er et nyt input
 tekst.addEventListener("input", ordtaelling);
