@@ -10,26 +10,30 @@ body {
     background-color: black;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
 }
 
-div {
+.box {
     display: flex;
     flex-direction: column;
     color: white;
+    width: 85vw;
+    border: red solid 3px;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: tomato 10px 10px 10px;
 }
 
-div label,
-#tekstfelt {
+
+div label {
     font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 #tekstfelt {
     background-color: white;
-}
-
-label {
-    margin-bottom: 1rem;
+    resize: none;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
 }
 
 .resultater {
@@ -39,4 +43,16 @@ label {
 .resultater p {
     font-size: 1rem;
     padding: 5px;
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+    .box {
+        width: 65vw;
+    }
+}
+
+@media (min-width:1025px) {
+    .box {
+        width: 55vw;
+    }
 }

@@ -9,9 +9,14 @@
     <!--Lav en side med et tekstfelt hvor brugeren kan indtaste en sætning. Siden skal ved hver ændring af tekstfeltet vise hvor mange ord samt karakterer med og uden mellemrum der aktuelt står i feltet. Det skal også vises hvor mange bogstaver der i snit indgår i ordene. Skrifttegn må ikke tælles som ord.-->
   </head>
   <body>
-    <div>
+    <div class="box">
       <label for="tekstfelt">Ordtæller</label>
-      <textarea id="tekstfelt" placeholder="Skriv din sætning her"></textarea>
+      <textarea
+        id="tekstfelt"
+        maxlength="300"
+        rows="7"
+        placeholder="Skriv din sætning her (Maks 300 tegn)"
+      ></textarea>
       <div class="resultater">
         <p>Tegn med mellemrum: <span id="tegnMed">0</span></p>
         <p>Tegn uden mellemrum: <span id="tegnUden">0</span></p>

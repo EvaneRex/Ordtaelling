@@ -18,7 +18,8 @@ function ordtaelling() {
   const ordArray = indhold.split(/\s+/g);
   const ordUdenSkrifttegn = [];
 
-  // Gå gennem hvert ord og fjerner skrifttegn i starten og slutningen af ordet.
+  // Gå gennem hvert ord og fjerner skrifttegn i starten og slutningen af ordet. EKS. !important -> important
+  // Hvis skrifttegn inde i et ord skal fjernes også, bruger man /[^a-zA-ZæøåÆØÅ\d]/g EKS. Anne-marie -> Annemarie
   for (let i = 0; i < ordArray.length; ++i) {
     let ord = ordArray[i].replace(
       /^[^a-zA-ZæøåÆØÅ\d]+|[^a-zA-ZæøåÆØÅ\d]+$/g,
@@ -28,7 +29,11 @@ function ordtaelling() {
       ordUdenSkrifttegn.push(ord); // hvis ordet er større end 0 så tilføjes det i et array
     }
   }
+
+  // Tjekker hvor mange ord der er tilbage, efter skrifttegn er fjernet
   const antalOrd = ordUdenSkrifttegn.length;
+
+  // console.log(ordUdenSkrifttegn);
 
   // UDREGNING AF GENNEMSNITTET AF TEGN I ORD
   let antalBogstaver = 0;
@@ -39,7 +44,7 @@ function ordtaelling() {
     antalBogstaver += ordUdenSkrifttegn[i].length;
   }
 
-  // hvis der er min. et ord, deler den det totale antal af bogstager med antallet af ord. toFixed(giver et decimal)
+  // hvis der er min. et ord, deler den det totale antal af bogstager med antallet af ord. toFixed(afrunder til et decimal- eller hvor mange man vil have)
   const gennemsnit = antalOrd > 0 ? (antalBogstaver / antalOrd).toFixed(1) : 0;
 
   // OPDATERER TALLET I TEKSTFELTERNE I HTML
